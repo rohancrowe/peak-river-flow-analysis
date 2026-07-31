@@ -125,5 +125,5 @@ Raw data should be downloaded directly from NRFA.
 Clone the repository:
 
 ```bash
-git clone git@github.com:yourusername/flood-frequency-analysis.git
+git clone git@github.com:rohancrowe/flood-risk-analysis.git
 ```

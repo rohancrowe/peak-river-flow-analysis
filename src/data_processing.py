@@ -235,20 +235,20 @@ single_peaks_results  = result[result["trough_before_flow"].notna() & result["tr
 mean_rise_time = single_peaks_results["time_to_previous_trough"].mean()
 
 # Below is to justify how we calculate mean time to rise, see README.md
-period = time_series.loc["2010-01-01":"2010-12-31"]
-fig, ax = plt.subplots(figsize=(12, 6))
-ax.plot(period.index, period["river flow (m3/s)"])
-ax.set_title("River Flow 2010")
-ax.set_xlabel("date")
-ax.set_ylabel("river flow (m³/s)")
-ax.axhline(y = river_flow_mean , color = "green" , linewidth = 1, label = "mean flow")
-ax.legend()
-ax.set_ylim(bottom=0)
-ax.set_xlim(pd.Timestamp("2010-01-01"), pd.Timestamp("2010-12-31"))
-ax.grid(True)
+# period = time_series.loc["2010-01-01":"2010-12-31"]
+# fig, ax = plt.subplots(figsize=(12, 6))
+# ax.plot(period.index, period["river flow (m3/s)"])
+# ax.set_title("River Flow 2010")
+# ax.set_xlabel("date")
+# ax.set_ylabel("river flow (m³/s)")
+# ax.axhline(y = river_flow_mean , color = "green" , linewidth = 1, label = "mean flow")
+# ax.legend()
+# ax.set_ylim(bottom=0)
+# ax.set_xlim(pd.Timestamp("2010-01-01"), pd.Timestamp("2010-12-31"))
+# ax.grid(True)
 
-plt.savefig(project_root / "results" / "figures" / "2010.png", dpi=300)
-plt.show()
+# plt.savefig(project_root / "results" / "figures" / "2010.png", dpi=300)
+# plt.show()
 
 
 ## We test for independence

@@ -114,5 +114,6 @@ ax.set_title("Q–Q Plot of GPD", fontsize = 8)
 ax.tick_params(axis="both", labelsize=4)
 fig.tight_layout()
 
-plt.savefig("results/QQ_plot.png", dpi=300, bbox_inches="tight")
-plt.show()
+# plt.savefig(project_root / "results" / "figures" /"QQ_plot", dpi=300, bbox_inches="tight")
+# plt.show()
+
