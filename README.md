@@ -11,6 +11,9 @@ How should we model the probability distribution of daily floods? This project u
 
 - [Important Note](#important-note)
 - [Methodology](#methodology)
+- [Data Processing](#data-processing)
+- [Distribution Fitting](#distribution-fitting)
+- [Statistical Tests](#statistical-tests)
 - [Results](#results)
 - [Data](#data)
 - [Installation](#installation)
@@ -43,7 +46,7 @@ The statistical procedures for independence testing below have been superseded, 
 
 3. We test the fit using Kolmogrov-Smirnov test with bootstrapping (because we've "trained" our model on the same data we're about to test its fit with). 
 
-### Data processing
+## Data processing
 
 As we can see, data from all of 1977 and 1978 is missing (is confirmed in the code). We need to look at the data from the end of 1976 and the start of 1979. If it looks like we are in the vicinity of a peak there, it may be necessary to also remove this peak from the dataset, as we do not know what the behaviour of the peak was like over when we move over the cut line. There is not much hope in analytically continuing the time series due to the high level of uncertainty in metereological effects that we would have to consider.
 
@@ -81,7 +84,7 @@ Test 1 is hard to implement. How do we calculate any single "time to rise"? Usin
 
 We can see single-peaked events typically have neighbouring troughs that are below the mean flow rate. However, visually the single peaks come in groups, arguably rain fall being more likely in a period of high rain fall means these events are not independent, but then you could argue a large period of drought implies a higher probability the next event is a period of rainfall. It is difficult to know where to draw the line for independence of flood events, this is some point where the analysis is arguably weaker.
 
-### Distribution fitting
+## Distribution fitting
 
 The GPD has three parameters; shape ($\xi$), location ($\mu$), and scale ($\sigma$). We only consider the case $\xi > 0$ 
 
@@ -106,7 +109,7 @@ For the peak data, location parameter is the threshold. Changing all the peak da
 
 The non-linear system formed by setting the partial derivatives equal to zero has no closed form expression for the solution. Therefore solution by numerical approximation is used in scipy to solve for the shape and scale MLEs given the data. 
 
-### Statistical tests
+## Statistical tests
 
 We want to use a Kolmogrov-Smirnov (KS) test to assess the fit of the GPD model to the data. But the model's been trained on the data we then want to test it on, this would not be a proper test of the fit of the data. It would be like testing an ML model on the same dataset as it was trained on; what you really want to know is whether the model holds up on other, similar datasets. 
 
