@@ -6,13 +6,25 @@ How should we model the probability distribution of daily floods? This project u
 2. Fit a generalised Pareto distribution to the data
 3. Assess the fit
 
+## Contents
+
+
+- [Important Note](#important-note)
+- [Methodology](#methodology)
+- [Results](#results)
+- [Data](#data)
+- [Installation](#installation)
+
+
+## Important Note
+
+The analysis below is usually done on 15 minute intervals. This analysis conducts it on daily intervals, as I wanted to build it from the raw data up, and only daily raw data is available. This has the effect on blunting the peaks (as they are averaged over a day). All the analysis below still applies to this daily series, which is in effect just a zoomed out and blunted version of the 15 minute series. However, this makes it important to note that the probability distribution and any measurement of flood yielded from this analysis is of daily average peak flow, not strictly the peak flow. 
+
+
+The statistical procedures for independence testing below have been superseded, see [this page](https://www.ceh.ac.uk/our-science/projects/flood-estimation-handbook) to find the most up to date standard procedures. However, the method outlined below is still an effective method for ensuring independent events.
+
+
 ## Methodology
-
-
-TO NOTE: The analysis below is usually done on 15 minute intervals. This analysis conducts it on daily intervals, as I wanted to build it from the raw data up, and only daily raw data is available. This has the effect on blunting the peaks (as they are averaged over a day). All the analysis below still applies to this daily series, which is in effect just a zoomed out and blunted version of the 15 minute series. However, this makes it important to note that the probability distribution and any measurement of flood yielded from this analysis is of daily average peak flow, not strictly the peak flow. 
-
-
-TO NOTE: The statistical procedures for independence testing below have been superseded, see [this page](https://www.ceh.ac.uk/our-science/projects/flood-estimation-handbook) to find the most up to date standard procedures. However, the method outlined below is still an effective method for ensuring independent events.
 
 
 1. We will find all peaks in the time series data and then subject them to the independence tests from the UK Centre for Ecology & Hydrology - see page 276 of the Flood Estimation Handbook Volume 3 Statistical procedures for flood frequency estimation linked at the bottom of [this webpage](https://www.ceh.ac.uk/data/software-models/flood-estimation-handbook). We need independent flood events to apply our limiting theorem (below), just like in the CLT how we need iid random variables. Then filter out smaller peaks so that the n largest independent peaks remain, where n is 5 times the number of years of data.
