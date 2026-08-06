@@ -3,3 +3,5 @@ data/raw/*.csv
 
 # Keep the folder structure
 !data/raw/README.md
+
+.DS_Store
