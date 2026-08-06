@@ -160,7 +160,7 @@ import numpy as np
 
 time_series = time_series.drop(time_series.loc["1977-01-01":"1978-12-31"].index)
 
-# In the 64.75 years of data, we want roughly 5 peaks over threshold per year, so we want roughly 334 peaks
+# In the 64.75 years of data, we want roughly 5 peaks over threshold per year, so we want roughly 324 peaks
 # The independence tests will ensure each peak is independent, we shouldn't worry if some years have more peaks than others, some years have more rain than others
 # First we calculate mean time to rise with all the single peaks we can get
 # For single peaks we use the condition that both the trough before and the trough after must be below the mean flow
@@ -187,7 +187,10 @@ troughs = ts.loc[trough_helper, ["date", "river flow (m3/s)"]].copy()
 peaks = peaks.rename(columns={"date": "peak_date", "river flow (m3/s)": "peak_flow"}).sort_values("peak_date") # we create peak and trough dataframes ordered chronologically
 troughs = troughs.rename(columns={"date": "trough_date", "river flow (m3/s)": "trough_flow"}).sort_values("trough_date")
 
-candidate_peaks = peaks.nlargest(500, "peak_flow").sort_values("peak_date").reset_index(drop=True) # we want the largest 334 peaks in the end, so we hope 500 is enough that once filtered, we have more than 334, then we sort chronologically
+# We want the largest 324 peaks in the end, so we hope 500 is enough that once filtered, we have more than 324, then we sort chronologically
+# If it is not enough we can go back and correct
+
+candidate_peaks = peaks.nlargest(500, "peak_flow").sort_values("peak_date").reset_index(drop=True) 
 troughs = troughs.reset_index(drop=True)
 
 
@@ -285,17 +288,17 @@ test_2_results = test_1_results.loc[keep_index_2].sort_values("peak_date").reset
 
 sorted_peaks = test_2_results.sort_values("peak_flow", ascending=False).reset_index(drop=True)
 
-peak_334 = sorted_peaks.loc[333, "peak_flow"]
-peak_335 = sorted_peaks.loc[334, "peak_flow"]
+peak_324 = sorted_peaks.loc[323, "peak_flow"]
+peak_325 = sorted_peaks.loc[324, "peak_flow"]
 
-POT_threshold = (peak_334 + peak_335) / 2
+POT_threshold = (peak_324 + peak_325) / 2
 
-processed_data = test_2_results.nlargest(334, "peak_flow").sort_values("peak_date").reset_index(drop=True)
+processed_data = test_2_results.nlargest(324, "peak_flow").sort_values("peak_date").reset_index(drop=True)
 
 processed_data = processed_data[["peak_date", "peak_flow"]]
 
-# processed_data.to_csv("flood-risk-analysis/data/processed/independent_peaks.csv", index=False)
+processed_data.to_csv(project_root / "data" / "processed" / "independent_peaks.csv", index=False)
 
-# pd.DataFrame({"POT_threshold": [POT_threshold]}).to_csv("flood-risk-analysis/data/processed/POT_threshold.csv", index=False)
+pd.DataFrame({"POT_threshold": [POT_threshold]}).to_csv(project_root / "data" / "processed" / "POT_threshold.csv", index=False)
 
 
