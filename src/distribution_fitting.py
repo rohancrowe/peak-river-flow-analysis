@@ -73,7 +73,7 @@ def gpd_bootstrap_test(peaks_over_threshold_data, n_boot=1000, random_state=None
 
 peaks_over_threshold_data = peaks_over_threshold["peaks_over_threshold"].to_numpy()
 
-result = gpd_bootstrap_test(peaks_over_threshold_data, random_state = 10) # p-value of 0.293 indicates there is no strong evidence against the parameters ksi_hat and sigma_hat
+result = gpd_bootstrap_test(peaks_over_threshold_data, random_state = 10) # p-value of 0.29 indicates there is no strong evidence against the parameters ksi_hat and sigma_hat
 
 print("shape:", result["shape"])
 print("scale:", result["scale"])

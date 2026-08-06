@@ -107,7 +107,7 @@ The idea is that if the KS statistic for the bootstrap samples is very frequentl
 
 ## Results
 
-We get a p-value of 0.293 > 0.05, therefore there is insufficient evidence to believe the original GPD with the MLE parameters is not an appropriate fit for the data. So our model is a good fit. To justify this further, here is a Q-Q plot:
+We get a p-value of 0.29 > 0.05, therefore there is insufficient evidence to believe the original GPD with the MLE parameters is not an appropriate fit for the data. So our model is a good fit. To justify this further, here is a Q-Q plot:
 
 ![QQ Plot](results/figures/QQ_plot.png)
 
