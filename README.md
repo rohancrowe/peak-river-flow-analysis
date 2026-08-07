@@ -1,4 +1,4 @@
-# flood-risk-analysis
+# Peak River Flow Analysis
 How should we model the probability distribution of daily floods? This project uses a peaks over threshold approach to clean and fit probability distributions to daily time series from UK river height data.
 
 ## Objectives
