@@ -1,5 +1,5 @@
 # Peak River Flow Analysis
-How should we model the probability distribution of daily floods? This project uses a peaks over threshold approach to clean and fit probability distributions to daily time series from UK river height data.
+How should we model the probability distribution of peak river flow? This project uses a peaks over threshold approach to clean and fit probability distributions to daily time series from UK river height data.
 
 ## Objectives
 1. Generate the n largest independent peaks over threshold from the daily flow data such that we include on average 5 peaks per year
